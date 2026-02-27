@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Premium Catalog</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans for a modern 2026 clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for modern lightweight icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                        },
+                        whatsapp: '#25D366',
+                        whatsappHover: '#1ebe57'
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'floating': '0 20px 40px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        /* Smooth reveal animation for cards */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar (Simplified) -->
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-40 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <i class="ph-fill ph-storefront text-brand-600 text-3xl"></i>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">Store<span class="text-brand-600">26</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-500 hover:text-gray-900 font-medium transition-colors">Home</a>
+                    <a href="#" class="text-brand-600 font-medium transition-colors">Products</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 font-medium transition-colors">About</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 font-medium transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <i class="ph ph-list text-2xl text-gray-600"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. TOP HEADER / HERO STRIP -->
+    <section class="bg-brand-50 pt-12 pb-16 relative overflow-hidden">
+        <!-- Decorative blob -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-brand-100 opacity-50 blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Breadcrumbs -->
+            <nav class="flex mb-6" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3 text-sm">
+                    <li class="inline-flex items-center">
+                        <a href="#" class="text-gray-500 hover:text-brand-600 flex items-center gap-1 transition-colors">
+                            <i class="ph ph-house"></i> Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center text-gray-400">
+                            <i class="ph ph-caret-right text-xs mx-1"></i>
+                            <span class="text-gray-900 font-medium ml-1">Products</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+                Our Products
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl">
+                Browse our premium collection. Found something you love? Connect with us instantly via WhatsApp or Call to place your order.
+            </p>
+        </div>
+    </section>
+
+    <!-- 2. SEARCH + FILTER BAR -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+        <div class="bg-white rounded-2xl shadow-soft p-4 md:p-6 border border-gray-100">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                
+                <!-- Search -->
+                <div class="w-full md:w-1/3 relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="ph ph-magnifying-glass text-gray-400 text-lg"></i>
+                    </div>
+                    <input type="text" id="searchInput" class="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white transition-all text-sm" placeholder="Search products by name...">
+                </div>
+
+                <!-- Filters -->
+                <div class="w-full md:w-auto flex flex-col sm:flex-row gap-3">
+                    <div class="relative min-w-[160px]">
+                        <select id="categoryFilter" class="block w-full pl-3 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 bg-gray-50 focus:bg-white appearance-none transition-all cursor-pointer">
+                            <option value="all">All Categories</option>
+                            <option value="agri-pump">Agri Water Pumps</option>
+                            <option value="agri-tools">Agri Tools</option>
+                            <option value="harvester">Harvesters</option>
+                            <option value="sprayer">Sprayers</option>
+                            <option value="accessories">Accessories / Spare</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                    </div>
+
+                    <div class="relative min-w-[160px]">
+                        <select id="sortFilter" class="block w-full pl-3 pr-10 py-3 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 bg-gray-50 focus:bg-white appearance-none transition-all cursor-pointer">
+                            <option value="newest">Sort: Newest</option>
+                            <option value="popular">Sort: Popular</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                    </div>
+
+                    <button id="clearFiltersBtn" class="px-4 py-3 text-sm font-medium text-gray-500 hover:text-brand-600 bg-white border border-gray-200 hover:border-brand-200 rounded-xl transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                        <i class="ph ph-x"></i> Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PRODUCTS GRID SECTION -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        <!-- Empty State (Hidden by default) -->
+        <div id="emptyState" class="hidden text-center py-20">
+            <i class="ph ph-package text-6xl text-gray-300 mb-4 inline-block"></i>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">No products found</h3>
+            <p class="text-gray-500">Try adjusting your search or filter criteria.</p>
+        </div>
+
+        <!-- Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <!-- Products will be dynamically injected here via JS -->
+        </div>
+    </main>
+
+    <!-- 4. NEW / COMING SOON SECTION -->
+    <section class="bg-gray-900 text-white py-16 mt-8 rounded-t-[3rem]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-brand-400 font-semibold tracking-wider text-sm uppercase bg-brand-900/50 px-3 py-1 rounded-full inline-block mb-3 border border-brand-800">Sneak Peek</span>
+                <h2 class="text-3xl font-bold mb-4">Coming Soon</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Launching soon — contact us for early booking and exclusive pre-order discounts.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Mini Card 1 -->
+                <div class="bg-gray-800 rounded-2xl p-4 flex items-center gap-4 border border-gray-700 hover:border-gray-600 transition-colors">
+                    <div class="w-20 h-20 bg-gray-700 rounded-xl overflow-hidden flex-shrink-0 relative">
+                        <img src="https://placehold.co/200x200/1f2937/4b5563?text=Q3+Drop" alt="Future Product" class="w-full h-full object-cover opacity-60">
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-gray-100">Smart Home Hub</h4>
+                        <p class="text-sm text-gray-400 mt-1">Expected: Nov 2026</p>
+                    </div>
+                </div>
+                <!-- Mini Card 2 -->
+                <div class="bg-gray-800 rounded-2xl p-4 flex items-center gap-4 border border-gray-700 hover:border-gray-600 transition-colors">
+                    <div class="w-20 h-20 bg-gray-700 rounded-xl overflow-hidden flex-shrink-0 relative">
+                        <img src="https://placehold.co/200x200/1f2937/4b5563?text=Next+Gen" alt="Future Product" class="w-full h-full object-cover opacity-60">
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-gray-100">Aero Drone Pro</h4>
+                        <p class="text-sm text-gray-400 mt-1">Expected: Dec 2026</p>
+                    </div>
+                </div>
+                <!-- Mini Card 3 -->
+                <div class="bg-gray-800 rounded-2xl p-4 flex items-center gap-4 border border-gray-700 hover:border-gray-600 transition-colors">
+                    <div class="w-20 h-20 bg-gray-700 rounded-xl overflow-hidden flex-shrink-0 relative">
+                        <img src="https://placehold.co/200x200/1f2937/4b5563?text=Wearable" alt="Future Product" class="w-full h-full object-cover opacity-60">
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-gray-100">Vitals Ring V2</h4>
+                        <p class="text-sm text-gray-400 mt-1">Expected: Jan 2027</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FOOTER -->
+    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="ph-fill ph-storefront text-brand-500 text-2xl"></i>
+                        <span class="font-bold text-xl text-white">Store<span class="text-brand-500">26</span></span>
+                    </div>
+                    <p class="text-sm">Premium products delivered with exceptional service. Contact us directly for personalized assistance.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors text-brand-400">Products</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Policies</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+                            <i class="ph ph-instagram-logo text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+                            <i class="ph ph-facebook-logo text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+                            <i class="ph ph-x-logo text-lg"></i>
+                        </a>
+                    </div>
+                    <p class="text-sm mt-4 text-gray-500">&copy; 2026 Store26. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 5. STICKY CONTACT OPTIONS (Floating Action Buttons) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <!-- Call Button -->
+        <a href="tel:+919876543210" class="group relative flex items-center justify-center w-14 h-14 bg-brand-600 text-white rounded-full shadow-floating hover:bg-brand-700 hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-300">
+            <i class="ph-fill ph-phone text-2xl"></i>
+            <!-- Tooltip -->
+            <span class="absolute right-full mr-4 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md">
+                Call Us
+                <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+            </span>
+        </a>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/919876543210?text=Hi!%20I'm%20visiting%20your%20website%20and%20would%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="group relative flex items-center justify-center w-14 h-14 bg-whatsapp text-white rounded-full shadow-floating hover:bg-whatsappHover hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300">
+            <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+            <!-- Tooltip -->
+            <span class="absolute right-full mr-4 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md">
+                Chat on WhatsApp
+                <div class="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+            </span>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC (Filtering & Rendering) -->
+    <script>
+        // Store Configuration
+        const STORE_PHONE = "919876543210"; // Replace with real number
+        
+        // Mock Product Data
+        const productsData = [
+            {
+                id: 1,
+                name: "naachi-elektra-330",
+                category: "harvester",
+                price: 4999,
+                badge: "Best Seller",
+                badgeColor: "bg-orange-500",
+                image: "assets\products\naachi-elektra-330\naachi-elektra-330-field-use-1.jpg",
+                bullets: ["Zero Emissions", "Less Noise Pollution", "Low Vibrations", "Less Maintenance Cost", "Less Downtime", "Cost Effective", "Rapid Return on Investment"],
+                dateAdded: "2026-02-15",
+                popularity: 95
+            },
+            {
+                id: 2,
+                name: "Minimalist Desk Mat Pro",
+                category: "accessories",
+                price: 1299,
+                badge: "New",
+                badgeColor: "bg-brand-600",
+                image: "https://placehold.co/600x600/f8fafc/334155?text=Desk+Mat",
+                bullets: ["Premium Vegan Leather", "Spill-resistant surface", "Anti-slip base"],
+                dateAdded: "2026-02-25",
+                popularity: 80
+            },
+            {
+                id: 3,
+                name: "water-king-300-plus-pro",
+                category: "agri-pump",
+                price: "Contact for price", // String price example
+                badge: "Limited",
+                badgeColor: "bg-purple-600",
+                image: "assets\products\water-king-300-plus-pro\water-king-300-plus-pro-1.jpeg",
+                bullets: ["App Controlled RGB", "Wireless Charging Base", "Voice Assistant Ready"],
+                dateAdded: "2026-01-10",
+                popularity: 88
+            },
+            {
+                id: 4,
+                name: "ErgoLift Laptop Stand",
+                category: "accessories",
+                price: 2499,
+                badge: null,
+                image: "https://placehold.co/600x600/f8fafc/334155?text=Laptop+Stand",
+                bullets: ["Aerospace Grade Aluminum", "Adjustable Height & Angle", "Folds Flat for Travel"],
+                dateAdded: "2025-11-20",
+                popularity: 70
+            },
+            {
+                id: 5,
+                name: "Nomad Travel Backpack",
+                category: "lifestyle",
+                price: 3500,
+                badge: "Best Seller",
+                badgeColor: "bg-orange-500",
+                image: "https://placehold.co/600x600/f8fafc/334155?text=Backpack",
+                bullets: ["Water-resistant Material", "15-inch Laptop Sleeve", "Hidden Security Pockets"],
+                dateAdded: "2025-12-05",
+                popularity: 92
+            },
+            {
+                id: 6,
+                name: "Zenith Mechanical Keyboard",
+                category: "electronics",
+                price: 8999,
+                badge: "New",
+                badgeColor: "bg-brand-600",
+                image: "https://placehold.co/600x600/f8fafc/334155?text=Keyboard",
+                bullets: ["Hot-swappable Switches", "Custom RGB Backlighting", "Wireless & Wired Modes"],
+                dateAdded: "2026-02-20",
+                popularity: 85
+            },
+            {
+                id: 7,
+                name: "Artisan Coffee Mug Set",
+                category: "lifestyle",
+                price: 850,
+                badge: null,
+                image: "https://placehold.co/600x600/f8fafc/334155?text=Mug+Set",
+                bullets: ["Handcrafted Ceramic", "Microwave Safe", "Set of 2 Mugs"],
+                dateAdded: "2025-10-15",
+                popularity: 65
+            },
+            {
+                id: 8,
+                name: "Pulse Smartwatch",
+                category: "electronics",
+                price: 5499,
+                badge: "Trending",
+                badgeColor: "bg-pink-500",
+                image: "https://placehold.co/600x600/f8fafc/334155?text=Smartwatch",
+                bullets: ["Always-on AMOLED Display", "Health & Sleep Tracking", "7-Day Battery"],
+                dateAdded: "2026-01-28",
+                popularity: 98
+            }
+        ];
+
+        // Format Currency
+        const formatPrice = (price) => {
+            if (typeof price === 'string') return price;
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(price);
+        };
+
+        // Generate WhatsApp Link dynamically
+        const getWhatsAppLink = (productName) => {
+            const message = `Hi! I'm interested in the "${productName}". Can you share more details and how to order?`;
+            return `https://wa.me/${STORE_PHONE}?text=${encodeURIComponent(message)}`;
+        };
+
+        // DOM Elements
+        const gridElement = document.getElementById('productGrid');
+        const emptyStateElement = document.getElementById('emptyState');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const clearBtn = document.getElementById('clearFiltersBtn');
+
+        // Render Function
+        const renderProducts = (productsToRender) => {
+            gridElement.innerHTML = '';
+            
+            if (productsToRender.length === 0) {
+                gridElement.classList.add('hidden');
+                emptyStateElement.classList.remove('hidden');
+                return;
+            }
+
+            gridElement.classList.remove('hidden');
+            emptyStateElement.classList.add('hidden');
+
+            productsToRender.forEach((product, index) => {
+                // Determine price styling
+                const isContactForPrice = typeof product.price === 'string';
+                const priceDisplay = formatPrice(product.price);
+                const priceClass = isContactForPrice ? 'text-brand-600 text-base' : 'text-gray-900 text-xl';
+
+                // Bullet points HTML
+                const bulletsHtml = product.bullets.map(b => 
+                    `<li class="flex items-start gap-2"><i class="ph-fill ph-check-circle text-brand-500 mt-0.5 text-sm"></i> <span>${b}</span></li>`
+                ).join('');
+
+                // Badge HTML
+                const badgeHtml = product.badge ? 
+                    `<div class="absolute top-3 left-3 ${product.badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm z-10">${product.badge}</div>` 
+                    : '';
+
+                // Animation delay staggered
+                const animationDelay = `${index * 0.05}s`;
+
+                const cardHTML = `
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full group animate-fade-in" style="animation-delay: ${animationDelay}; opacity: 0;">
+                        
+                        <!-- Image Area -->
+                        <div class="relative aspect-square overflow-hidden bg-gray-50 p-6 flex items-center justify-center">
+                            ${badgeHtml}
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500 ease-in-out">
+                            
+                            <!-- Overlay on hover -->
+                            <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg font-bold text-gray-900 leading-tight mb-3 line-clamp-2">${product.name}</h3>
+                            
+                            <ul class="text-sm text-gray-500 space-y-1.5 mb-6 flex-grow">
+                                ${bulletsHtml}
+                            </ul>
+
+                            <div class="mt-auto pt-4 border-t border-gray-100">
+                                <div class="font-bold ${priceClass} mb-4">${priceDisplay}</div>
+                                
+                                <div class="flex flex-col gap-2">
+                                    <a href="${getWhatsAppLink(product.name)}" target="_blank" class="w-full bg-whatsapp hover:bg-whatsappHover text-white font-semibold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-sm focus:ring-2 focus:ring-green-400 focus:ring-offset-1">
+                                        <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                                        Order on WhatsApp
+                                    </a>
+                                    <button class="w-full bg-gray-50 hover:bg-gray-100 text-gray-700 font-medium py-2.5 px-4 rounded-xl transition-colors border border-gray-200">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gridElement.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        };
+
+        // Filter and Sort Logic
+        const applyFilters = () => {
+            let filtered = [...productsData];
+            
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            const sortMethod = sortFilter.value;
+
+            // Apply Search
+            if (searchTerm) {
+                filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm));
+            }
+
+            // Apply Category
+            if (category !== 'all') {
+                filtered = filtered.filter(p => p.category === category);
+            }
+
+            // Apply Sort
+            filtered.sort((a, b) => {
+                if (sortMethod === 'newest') {
+                    return new Date(b.dateAdded) - new Date(a.dateAdded);
+                } else if (sortMethod === 'popular') {
+                    return b.popularity - a.popularity;
+                } else if (sortMethod === 'price-low') {
+                    // Handle "Contact for price" (treat as highest price so it goes to bottom)
+                    const priceA = typeof a.price === 'number' ? a.price : Infinity;
+                    const priceB = typeof b.price === 'number' ? b.price : Infinity;
+                    return priceA - priceB;
+                } else if (sortMethod === 'price-high') {
+                    // Handle "Contact for price" (treat as lowest price so it goes to bottom)
+                    const priceA = typeof a.price === 'number' ? a.price : -Infinity;
+                    const priceB = typeof b.price === 'number' ? b.price : -Infinity;
+                    return priceB - priceA;
+                }
+                return 0;
+            });
+
+            renderProducts(filtered);
+        };
+
+        // Event Listeners
+        searchInput.addEventListener('input', applyFilters);
+        categoryFilter.addEventListener('change', applyFilters);
+        sortFilter.addEventListener('change', applyFilters);
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            categoryFilter.value = 'all';
+            sortFilter.value = 'newest';
+            applyFilters();
+        });
+
+        // Initial Render
+        // Set default sort to popular on load
+        sortFilter.value = 'popular';
+        applyFilters();
+
+    </script>
+</body>
+</html>
