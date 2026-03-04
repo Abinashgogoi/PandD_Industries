@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policies & Legal | P&D Industries</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#10b981', // Emerald 500
+                            dark: '#0f172a',  // Slate 900
+                            accent: '#059669', // Emerald 600
+                            light: '#f1f5f9'   // Slate 100
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 8px 30px rgba(0, 0, 0, 0.04)',
+                        'soft-hover': '0 20px 40px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom overrides to ensure absolute pixel-perfect rendering */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #10b981;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Decorative Hero Pattern */
+        .hero-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100 shadow-sm transition-all duration-300" id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-brand-dark text-white rounded-xl flex items-center justify-center group-hover:bg-brand-accent transition-colors duration-300">
+                        <i class="ph-bold ph-factory text-xl"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-brand-dark">P&D Industries</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-brand-dark font-medium transition-colors">Home</a>
+                    <a href="products.html" class="nav-link text-gray-600 hover:text-brand-dark font-medium transition-colors">Products</a>
+                    <a href="about.html" class="nav-link text-gray-600 hover:text-brand-dark font-medium transition-colors">About</a>
+                    <a href="contact.html" class="nav-link text-gray-600 hover:text-brand-dark font-medium transition-colors">Contact</a>
+                    <a href="faq.html" class="nav-link text-gray-600 hover:text-brand-dark font-medium transition-colors">FAQ</a>
+                    <a href="policies.html" class="nav-link active text-brand-accent font-semibold transition-colors">Policies</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-green transition-colors">
+                    <i class="ph ph-list text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col">
+                <a href="index.html" class="block px-3 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brand-accent transition-colors">Home</a>
+                <a href="products.html" class="block px-3 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brand-accent transition-colors">Products</a>
+                <a href="about.html" class="block px-3 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brand-accent transition-colors">About</a>
+                <a href="contact.html" class="block px-3 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brand-accent transition-colors">Contact</a>
+                <a href="faq.html" class="block px-3 py-3 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-brand-accent transition-colors">FAQ</a>
+                <a href="policies.html" class="block px-3 py-3 rounded-xl text-base font-bold bg-brand-green/10 text-brand-accent transition-colors">Policies</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section class="bg-brand-dark text-white pt-24 pb-32 px-4 relative overflow-hidden">
+            <!-- Decorative elements -->
+            <div class="absolute inset-0 hero-pattern opacity-20"></div>
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-green rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-brand-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 text-brand-green text-sm font-medium mb-6 backdrop-blur-sm border border-white/10 shadow-sm">
+                    <i class="ph ph-calendar-blank"></i>
+                    Last updated: March 3, 2026
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">Policies & <span class="text-brand-green">Legal</span></h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+                    Read our policies for privacy, terms, shipping and important disclaimers. We believe in complete transparency with our clients and partners.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Grid Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20 pb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                
+                <!-- Privacy Policy Card -->
+                <a href="privacy-policy.html" class="group bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-start relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-green/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    
+                    <div class="w-16 h-16 rounded-2xl bg-brand-green/10 text-brand-accent flex items-center justify-center mb-6 group-hover:bg-brand-accent group-hover:text-white transition-colors duration-300 z-10">
+                        <i class="ph ph-shield-check text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-3 z-10">Privacy Policy</h3>
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed z-10">
+                        Learn how we collect, use, process and strictly protect your personal data and corporate information when you use our services.
+                    </p>
+                    <div class="mt-auto z-10">
+                        <span class="text-brand-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                            Read Policy <i class="ph-bold ph-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Terms of Service Card -->
+                <a href="terms.html" class="group bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-start relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    
+                    <div class="w-16 h-16 rounded-2xl bg-gray-100 text-brand-dark flex items-center justify-center mb-6 group-hover:bg-brand-dark group-hover:text-white transition-colors duration-300 z-10">
+                        <i class="ph ph-file-text text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-3 z-10">Terms of Service</h3>
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed z-10">
+                        The rules, guidelines, and agreements that govern your use of P&D Industries' website, products, and industrial solutions.
+                    </p>
+                    <div class="mt-auto z-10">
+                        <span class="text-brand-dark font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                            Read Terms <i class="ph-bold ph-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Shipping & Returns Card -->
+                <a href="shipping-returns.html" class="group bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-start relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-green/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    
+                    <div class="w-16 h-16 rounded-2xl bg-brand-green/10 text-brand-accent flex items-center justify-center mb-6 group-hover:bg-brand-accent group-hover:text-white transition-colors duration-300 z-10">
+                        <i class="ph ph-truck text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-3 z-10">Shipping & Returns</h3>
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed z-10">
+                        Detailed information regarding our global shipping timelines, delivery protocols, and our industrial equipment return procedures.
+                    </p>
+                    <div class="mt-auto z-10">
+                        <span class="text-brand-accent font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                            View Details <i class="ph-bold ph-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Disclaimer Card -->
+                <a href="disclaimer.html" class="group bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-start relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                    
+                    <div class="w-16 h-16 rounded-2xl bg-gray-100 text-brand-dark flex items-center justify-center mb-6 group-hover:bg-brand-dark group-hover:text-white transition-colors duration-300 z-10">
+                        <i class="ph ph-warning-circle text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-3 z-10">Disclaimer</h3>
+                    <p class="text-gray-600 mb-8 flex-grow leading-relaxed z-10">
+                        Important legal notices, liability limitations, and warranties regarding the usage of our digital store and industrial catalog.
+                    </p>
+                    <div class="mt-auto z-10">
+                        <span class="text-brand-dark font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                            Read Disclaimer <i class="ph-bold ph-arrow-right"></i>
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- CTA Strip -->
+        <section class="max-w-5xl mx-auto mb-24 px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 md:p-12 text-center border border-gray-100 shadow-soft relative overflow-hidden">
+                <!-- Decorative subtle background icon -->
+                <i class="ph-fill ph-question absolute -right-10 -bottom-10 text-9xl text-gray-50 opacity-50 rotate-12 pointer-events-none"></i>
+                
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-brand-light text-brand-dark rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="ph ph-headset text-3xl"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-brand-dark mb-4">Need help understanding our policies?</h2>
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto text-lg">
+                        Our dedicated support and legal team is here to answer any questions or concerns you might have regarding our terms.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <a href="https://wa.me/918724828479" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366] text-white px-8 py-3.5 rounded-xl font-medium hover:bg-[#1DA851] transition-colors shadow-sm hover:shadow-md">
+                            <i class="ph-fill ph-whatsapp logo text-xl"></i> 
+                            WhatsApp Us
+                        </a>
+                        <a href="mailto:mainadigitalstore@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-xl font-medium hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md">
+                            <i class="ph ph-envelope-simple text-xl"></i> 
+                            Email Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Consistent with About/Brand) -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-brand-green text-white rounded-lg flex items-center justify-center">
+                            <i class="ph-bold ph-factory"></i>
+                        </div>
+                        <span class="font-bold text-xl tracking-tight">P&D Industries</span>
+                    </a>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Leading the future of industrial manufacturing and digital solutions. Quality, innovation, and reliability since inception.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-brand-green hover:text-white transition-colors">
+                            <i class="ph-fill ph-linkedin-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-brand-green hover:text-white transition-colors">
+                            <i class="ph-fill ph-twitter-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-brand-green hover:text-white transition-colors">
+                            <i class="ph-fill ph-facebook-logo text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">Products & Services</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">About Us</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Policies (Footer) -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">Terms of Service</a></li>
+                        <li><a href="shipping-returns.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">Shipping & Returns</a></li>
+                        <li><a href="disclaimer.html" class="text-gray-400 hover:text-brand-green transition-colors text-sm">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="ph ph-phone text-brand-green text-lg shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="mb-1">Phone / WhatsApp:</p>
+                                <a href="tel:+918724828479" class="hover:text-white transition-colors block">+91 87248 28479</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i class="ph ph-envelope-simple text-brand-green text-lg shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="mb-1">Email:</p>
+                                <a href="mailto:mainadigitalstore@gmail.com" class="hover:text-white transition-colors block break-all">mainadigitalstore@gmail.com</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2026 P&D Industries. All rights reserved.
+                </p>
+                <div class="flex items-center gap-2 text-gray-500 text-sm">
+                    <span>Designed with precision.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('ph-x');
+                    icon.classList.add('ph-list');
+                } else {
+                    icon.classList.remove('ph-list');
+                    icon.classList.add('ph-x');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

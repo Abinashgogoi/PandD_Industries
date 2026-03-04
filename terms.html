@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | P&D Industries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose h2 { color: #0f172a; font-weight: 600; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.75; color: #475569; }
+        .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #475569; }
+        .prose li { margin-bottom: 0.5rem; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <i data-lucide="hexagon" class="h-8 w-8 text-brand-600 mr-2"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">P&D <span class="text-brand-600">Industries</span></span>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">Home</a>
+                    <a href="product-catalog.html" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">Products</a>
+                    <a href="about.html" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">About Us</a>
+                    <a href="contact.html" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">Contact</a>
+                </nav>
+
+                <!-- Get a Quote Button (Desktop) -->
+                <div class="hidden md:flex">
+                    <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500">
+                        Request Quote
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="pt-32 pb-20 bg-brand-950 text-white relative overflow-hidden">
+        <!-- Abstract background pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="none" stroke="currentColor" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Terms of Service</h1>
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <i data-lucide="calendar" class="w-4 h-4 mr-2 text-brand-100"></i>
+                <span class="text-sm font-medium text-brand-100">Last updated: March 3, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 md:p-12 prose max-w-none">
+            
+            <p class="text-lg text-slate-600 mb-8 border-b border-slate-100 pb-8">
+                Welcome to P&D Industries. These Terms of Service outline the rules and regulations for the use of our website and the supply of our products and services. By accessing this website and utilizing our services, you accept these terms in full.
+            </p>
+
+            <section id="acceptance">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using our website, services, or placing an inquiry, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any part of these terms, you are prohibited from using or accessing this site or our services.</p>
+            </section>
+
+            <section id="services">
+                <h2>2. Services & Product Supply</h2>
+                <p>We specialize in the supply of premium technological and industrial products. Our business operates primarily on a B2B, inquiry-based model. We do not support direct e-commerce checkout on this platform. All pricing, product supply, and logistics are coordinated directly with our sales representatives following a formal inquiry.</p>
+            </section>
+
+            <section id="product-info">
+                <h2>3. Product Information Disclaimer</h2>
+                <p>While we strive to provide accurate and up-to-date information, the product specifications, images, dimensions, and features presented on our website are for illustrative and general informational purposes only. </p>
+                <p><strong>Please note:</strong> Actual specifications may vary based on the specific model requested, manufacturer updates, and regional variants. The definitive specifications of any product will be explicitly outlined in the final official invoice or quotation provided to you.</p>
+            </section>
+
+            <section id="pricing">
+                <h2>4. Pricing & Availability</h2>
+                <p>All prices listed, displayed, or discussed prior to an official quotation are subject to change without notice. Our inventory and supply chains are dynamic. Therefore, final pricing, applicable taxes, shipping costs, and product availability are strictly subject to confirmation and are only valid once an official quotation is issued by our team.</p>
+            </section>
+
+            <section id="orders">
+                <h2>5. Orders & Confirmation Process</h2>
+                <p>Submitting an inquiry or requesting a quote through our website does not constitute a legally binding contract or an obligation to supply. A formal contract of sale is only established when:</p>
+                <ul>
+                    <li>We issue a formal order confirmation or proforma invoice to you.</li>
+                    <li>You provide written acceptance of the quotation or fulfill the initial payment terms outlined therein.</li>
+                </ul>
+            </section>
+
+            <section id="payments">
+                <h2>6. Payments</h2>
+                <p>Because our services are tailored to enterprise and industrial supply, standard payment terms are not listed on our public domain. Acceptable modes of payment, schedules, and currency requirements will be communicated individually upon inquiry and clearly detailed in your official quotation or invoice. We reserve the right to withhold product dispatch until payment is cleared as per the agreed terms.</p>
+            </section>
+
+            <section id="warranty">
+                <h2>7. Warranty</h2>
+                <p>Product warranties are strictly subject to the original manufacturer's warranty terms and conditions. The duration and scope of the warranty coverage will be explicitly stated in the final invoice. We will facilitate warranty claims as an intermediary where applicable, but we do not offer independent warranties beyond what is provided by the manufacturer unless specifically contracted in writing.</p>
+            </section>
+
+            <section id="liability">
+                <h2>8. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by applicable law, in no event shall P&D Industries, its directors, employees, or partners be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the services; (ii) any conduct or content of any third party on the services; or (iii) any delay or failure in product delivery beyond our reasonable control.</p>
+            </section>
+
+            <section id="ip">
+                <h2>9. Intellectual Property</h2>
+                <p>The website and its original content, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by P&D Industries, its licensors, or other providers of such material and are protected by Indian and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+            </section>
+
+            <section id="governing-law">
+                <h2>10. Governing Law & Jurisdiction</h2>
+                <p>These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions.</p>
+                <p>Any dispute, controversy, or claim arising out of or relating to these Terms of Service, or the breach, termination, or invalidity thereof, shall be subject to the exclusive jurisdiction of the competent courts located in <strong>Assam, India</strong>.</p>
+            </section>
+
+            <section id="contact">
+                <h2>11. Contact Information</h2>
+                <p>If you have any questions, concerns, or require clarification regarding these Terms of Service, please reach out to our legal and compliance team:</p>
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 mt-4">
+                    <ul class="list-none pl-0 mb-0 space-y-3">
+                        <li class="flex items-center text-slate-700">
+                            <i data-lucide="mail" class="w-5 h-5 mr-3 text-brand-600"></i>
+                            mainadigitalstore@gmail.com
+                        </li>
+                        <li class="flex items-center text-slate-700">
+                            <i data-lucide="phone" class="w-5 h-5 mr-3 text-brand-600"></i>
+                            +91 87248 28479
+                        </li>
+                        <li class="flex items-center text-slate-700">
+                            <i data-lucide="message-circle" class="w-5 h-5 mr-3 text-brand-600"></i>
+                            WhatsApp: +91 87248 28479
+                        </li>
+                        <li class="flex items-start text-slate-700">
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 text-brand-600 mt-1"></i>
+                            <span>P&D Industries<br>B.G Road, Biswanath Town, Assam 784177</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Call to Action Section (Matches other pages) -->
+    <section class="bg-slate-900 py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="cta-pattern" width="32" height="32" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="2" fill="currentColor"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#cta-pattern)" fill-opacity="0.5"/>
+            </svg>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to upgrade your infrastructure?</h2>
+            <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">Get in touch with our supply experts today to request a comprehensive quote tailored to your business needs.</p>
+            <a href="#" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md text-slate-900 bg-brand-500 hover:bg-brand-400 shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-brand-500">
+                Contact Sales
+                <i data-lucide="arrow-right" class="ml-2 -mr-1 w-5 h-5"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="hexagon" class="h-6 w-6 text-brand-500 mr-2"></i>
+                        <span class="font-bold text-lg tracking-tight text-white">P&D <span class="text-brand-500">Industries</span></span>
+                    </div>
+                    <p class="text-sm max-w-sm mb-4 leading-relaxed">
+                        Premium industrial and technological supply solutions for modern enterprises. Reliable, scalable, and built for the future.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="h-5 w-5"></i>
+                        </a>
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Company</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Products</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-white tracking-wider uppercase mb-4">Legal</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="privacy-policy.html" class="hover:text-brand-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-brand-400 font-medium">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2026 P&D Industries. All rights reserved.</p>
+                <p class="mt-2 md:mt-0 flex items-center">
+                    Operating from Assam, India <i data-lucide="globe" class="ml-2 h-4 w-4"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Support | P&D Industries</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#10b981', // Emerald 500
+                            dark: '#0f172a',  // Slate 900
+                            darker: '#020617', // Slate 950
+                            card: '#1e293b',   // Slate 800
+                            border: '#334155', // Slate 700
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Accordion transition styles */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        
+        /* Custom scrollbar for webkit to match dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981; 
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-300 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Sticky Header -->
+    <header class="fixed w-full top-0 z-50 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <i class="ph-fill ph-factory text-3xl text-brand-green group-hover:text-emerald-400 transition-colors"></i>
+                        <span class="font-bold text-xl tracking-tight text-white">P&D<span class="text-brand-green">.</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+                    <a href="products.html" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
+                    <a href="about.html" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+                    <a href="contact.html" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+                    <a href="faq.html" class="text-sm font-medium text-brand-green border-b-2 border-brand-green pb-1">FAQ</a>
+                </nav>
+
+                <!-- CTA Button (Desktop) -->
+                <div class="hidden md:flex items-center">
+                    <a href="https://wa.me/918724828479" target="_blank" class="flex items-center gap-2 bg-brand-green hover:bg-emerald-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-emerald-900/20">
+                        <i class="ph ph-whatsapp-logo text-lg"></i>
+                        Chat Now
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white p-2 focus:outline-none">
+                        <i class="ph ph-list text-3xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-brand-border absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">Home</a>
+                <a href="products.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">Products</a>
+                <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">About</a>
+                <a href="contact.html" class="block px-3 py-3 rounded-md text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white">Contact</a>
+                <a href="faq.html" class="block px-3 py-3 rounded-md text-base font-medium text-brand-green bg-slate-800/50">FAQ</a>
+                <a href="https://wa.me/918724828479" target="_blank" class="mt-4 flex items-center justify-center gap-2 bg-brand-green text-white px-3 py-3 rounded-md text-base font-medium">
+                    <i class="ph ph-whatsapp-logo text-xl"></i> WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-20">
+        
+        <!-- Hero Section -->
+        <section class="relative py-20 lg:py-28 overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 bg-brand-darker">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
+                <div class="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 rounded-full bg-brand-green/10 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-32 -mb-32 w-96 h-96 rounded-full bg-emerald-900/20 blur-3xl"></div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-card border border-brand-border text-brand-green text-sm font-medium mb-6">
+                    <i class="ph-fill ph-info"></i> Support Center
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
+                    FAQ & <span class="text-brand-green">Support</span>
+                </h1>
+                <p class="mt-4 text-xl text-slate-400 max-w-2xl mx-auto">
+                    Quick answers to common questions. Need immediate assistance? Reach out to our team directly.
+                </p>
+            </div>
+        </section>
+
+        <!-- Quick Actions Cards -->
+        <section class="relative z-10 -mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- WhatsApp Card -->
+                <a href="https://wa.me/918724828479" target="_blank" class="group bg-brand-card border border-brand-border hover:border-brand-green rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-brand-green/10 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-full bg-brand-green/10 flex items-center justify-center mb-4 group-hover:bg-brand-green group-hover:text-white transition-colors">
+                        <i class="ph ph-whatsapp-logo text-2xl text-brand-green group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Chat on WhatsApp</h3>
+                    <p class="text-sm text-slate-400 mb-4">Fastest response time. Available for orders, demos, and support.</p>
+                    <span class="text-brand-green text-sm font-semibold flex items-center gap-1">
+                        +91 87248 28479 <i class="ph-bold ph-arrow-right"></i>
+                    </span>
+                </a>
+
+                <!-- Call Card -->
+                <a href="tel:+918724828479" class="group bg-brand-card border border-brand-border hover:border-blue-500 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                        <i class="ph ph-phone-call text-2xl text-blue-500 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Call Support</h3>
+                    <p class="text-sm text-slate-400 mb-4">Speak directly with our industrial equipment specialists.</p>
+                    <span class="text-blue-500 text-sm font-semibold flex items-center gap-1">
+                        +91 87248 28479 <i class="ph-bold ph-arrow-right"></i>
+                    </span>
+                </a>
+
+                <!-- Email Card -->
+                <a href="mailto:mainadigitalstore@gmail.com" class="group bg-brand-card border border-brand-border hover:border-purple-500 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                        <i class="ph ph-envelope-simple text-2xl text-purple-500 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Email Support</h3>
+                    <p class="text-sm text-slate-400 mb-4">Best for detailed inquiries, bulk quotations, and attachments.</p>
+                    <span class="text-purple-500 text-sm font-semibold flex items-center gap-1 line-clamp-1">
+                        mainadigitalstore@gmail.com <i class="ph-bold ph-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Search Bar -->
+            <div class="relative mb-12">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="ph ph-magnifying-glass text-xl text-slate-400"></i>
+                </div>
+                <input type="text" id="faqSearch" placeholder="Search questions (delivery, warranty, price...)" 
+                    class="w-full bg-brand-card border border-brand-border rounded-xl py-4 pl-12 pr-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition-all shadow-lg shadow-brand-darker">
+            </div>
+
+            <!-- Accordion List -->
+            <div id="faqContainer" class="space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">How to place an order?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            To place an order, simply send us a message on WhatsApp (+91 87248 28479) with the product name or screenshot. Our team will verify availability, provide the final quotation including shipping, and guide you through the secure payment process.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">Why is the price listed as "Contact for Price"?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Industrial machinery prices frequently fluctuate based on raw material costs, customization requirements, and bulk order quantities. To ensure we offer you the most accurate and competitive rate for your specific needs, we ask that you contact us directly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">Do you deliver to other states?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Yes, we provide Pan-India delivery. We partner with reliable, heavy-duty transport and logistics services to ensure your machinery reaches your facility safely, regardless of your state.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">What are the delivery times and charges?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Delivery usually takes between 3 to 7 business days, depending on your exact location and the size of the order. Shipping charges are calculated at the time of dispatch based on the total weight and destination pin code.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">What are the warranty details on your products?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            We offer a standard 1-year warranty on manufacturing defects for most of our heavy machinery. However, warranty specifics can vary by product category and brand. Please ask our team for the exact warranty terms of the specific item you wish to purchase.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">Do you provide installation and service support?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Yes! We provide free video-call support for installation and basic troubleshooting. If required, we can also dispatch an on-site service engineer to your location for a nominal technical service fee.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">What is your return and refund policy?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Due to the industrial nature of our goods, returns are only accepted if the product is delivered damaged or if an incorrect item was shipped. Such issues must be reported to our support team with unboxing photos/videos within 24 hours of delivery.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 8 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">What payment methods do you accept?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            We accept direct Bank Transfers (NEFT/RTGS), UPI, and major business wallets. An advance payment is generally required to confirm dispatch for heavy machinery orders.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 9 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">How can I get a product demo or video?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Simply ping us on WhatsApp with the machine you are interested in. We have a vast library of live working videos and demonstrations that we can share with you instantly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 10 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">Can I buy spare parts from you?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Yes, absolutely. We maintain a comprehensive stock of essential spare parts and consumables for all the machinery we sell to ensure minimal downtime for your operations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 11 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">Are bulk orders available?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            Yes, we cater to B2B, wholesale, and bulk requirements. We offer highly competitive, specially discounted pricing structures for volume purchases. Contact us for a custom B2B quotation.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 12 -->
+                <div class="faq-item bg-brand-card rounded-xl border border-brand-border overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none group">
+                        <span class="font-semibold text-lg text-white group-hover:text-brand-green transition-colors">How do I confirm if a product is in stock?</span>
+                        <i class="ph-bold ph-caret-down text-brand-green transition-transform duration-300 flex-shrink-0 ml-4"></i>
+                    </button>
+                    <div class="faq-content bg-slate-800/50">
+                        <div class="px-6 pb-6 text-slate-300 leading-relaxed border-t border-brand-border/50 pt-4 mt-2">
+                            The fastest way to verify current inventory is to share a screenshot or link of the product on our official WhatsApp number. Our warehouse team will confirm real-time availability within minutes.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- No Results Message (Hidden by default) -->
+            <div id="noResults" class="hidden text-center py-12">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-800 text-slate-500 mb-4">
+                    <i class="ph ph-question text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">No matching questions found</h3>
+                <p class="text-slate-400">Try adjusting your search terms or contact support directly.</p>
+            </div>
+
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 bg-brand-card border-y border-brand-border mt-10">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Still Need Help?</h2>
+                <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto">
+                    Can't find the answer you're looking for? Our support team is ready to assist you. 
+                    <span class="block mt-2 text-brand-green font-medium"><i class="ph-fill ph-clock mr-1"></i> Average response time is under 10 minutes.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://wa.me/918724828479" target="_blank" class="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-emerald-900/20">
+                        <i class="ph ph-whatsapp-logo text-2xl"></i>
+                        Message on WhatsApp
+                    </a>
+                    <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-brand-dark hover:bg-slate-900 border border-brand-border text-white px-8 py-4 rounded-xl font-bold transition-all">
+                        <i class="ph ph-envelope-simple text-2xl"></i>
+                        Visit Contact Page
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-darker pt-16 pb-8 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Column -->
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html" class="flex items-center gap-2 mb-4">
+                        <i class="ph-fill ph-factory text-3xl text-brand-green"></i>
+                        <span class="font-bold text-xl tracking-tight text-white">P&D<span class="text-brand-green">.</span></span>
+                    </a>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                        Your trusted partner for premium industrial machinery, tools, and heavy-duty equipment.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-card flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-green transition-all"><i class="ph-fill ph-facebook-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-card flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-green transition-all"><i class="ph-fill ph-instagram-logo text-xl"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-card flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-green transition-all"><i class="ph-fill ph-youtube-logo text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-slate-400 hover:text-brand-green transition-colors text-sm flex items-center gap-2"><i class="ph-bold ph-caret-right text-xs"></i> Home</a></li>
+                        <li><a href="products.html" class="text-slate-400 hover:text-brand-green transition-colors text-sm flex items-center gap-2"><i class="ph-bold ph-caret-right text-xs"></i> Products</a></li>
+                        <li><a href="about.html" class="text-slate-400 hover:text-brand-green transition-colors text-sm flex items-center gap-2"><i class="ph-bold ph-caret-right text-xs"></i> About Us</a></li>
+                        <li><a href="contact.html" class="text-slate-400 hover:text-brand-green transition-colors text-sm flex items-center gap-2"><i class="ph-bold ph-caret-right text-xs"></i> Contact</a></li>
+                        <li><a href="faq.html" class="text-brand-green transition-colors text-sm flex items-center gap-2"><i class="ph-bold ph-caret-right text-xs"></i> FAQ & Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-semibold mb-6">Contact Us</h4>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <a href="https://wa.me/918724828479" target="_blank" class="flex items-start gap-3 p-3 rounded-lg bg-brand-card border border-brand-border hover:border-brand-green transition-colors">
+                            <i class="ph-fill ph-whatsapp-logo text-xl text-brand-green mt-0.5"></i>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mb-1">WhatsApp</p>
+                                <p class="text-slate-300 text-sm font-semibold">+91 87248 28479</p>
+                            </div>
+                        </a>
+                        <a href="tel:+918724828479" class="flex items-start gap-3 p-3 rounded-lg bg-brand-card border border-brand-border hover:border-brand-green transition-colors">
+                            <i class="ph-fill ph-phone text-xl text-brand-green mt-0.5"></i>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mb-1">Phone</p>
+                                <p class="text-slate-300 text-sm font-semibold">+91 87248 28479</p>
+                            </div>
+                        </a>
+                        <a href="mailto:mainadigitalstore@gmail.com" class="flex items-start gap-3 p-3 rounded-lg bg-brand-card border border-brand-border hover:border-brand-green transition-colors sm:col-span-2">
+                            <i class="ph-fill ph-envelope-simple text-xl text-brand-green mt-0.5"></i>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mb-1">Email</p>
+                                <p class="text-slate-300 text-sm font-semibold">mainadigitalstore@gmail.com</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-brand-border flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm text-center md:text-left">
+                    &copy; <script>document.write(new Date().getFullYear())</script> P&D Industries. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('ph-x');
+                    icon.classList.add('ph-list');
+                } else {
+                    icon.classList.remove('ph-list');
+                    icon.classList.add('ph-x');
+                }
+            });
+
+            // FAQ Accordion Logic
+            const faqs = document.querySelectorAll('.faq-item');
+            
+            faqs.forEach(faq => {
+                const btn = faq.querySelector('.faq-btn');
+                const content = faq.querySelector('.faq-content');
+                const icon = faq.querySelector('i');
+
+                btn.addEventListener('click', () => {
+                    const isOpen = content.style.maxHeight;
+
+                    // Close all other accordions (Optional Single-Open Behavior)
+                    document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = null);
+                    document.querySelectorAll('.faq-btn i').forEach(i => i.classList.remove('rotate-180'));
+                    document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('border-brand-green'));
+
+                    // If it wasn't open, open it
+                    if (!isOpen) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.add('rotate-180');
+                        faq.classList.add('border-brand-green');
+                    }
+                });
+            });
+
+            // Live Search Logic
+            const searchInput = document.getElementById('faqSearch');
+            const noResults = document.getElementById('noResults');
+
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                let hasVisibleFaqs = false;
+
+                faqs.forEach(faq => {
+                    const question = faq.querySelector('.faq-btn span').textContent.toLowerCase();
+                    const answer = faq.querySelector('.faq-content').textContent.toLowerCase();
+                    
+                    // Search in both question and answer text
+                    if(question.includes(term) || answer.includes(term)) {
+                        faq.style.display = 'block';
+                        hasVisibleFaqs = true;
+                    } else {
+                        faq.style.display = 'none';
+                        // If it's hidden during search, ensure it's closed
+                        const content = faq.querySelector('.faq-content');
+                        const icon = faq.querySelector('i');
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                        faq.classList.remove('border-brand-green');
+                    }
+                });
+
+                // Toggle 'No Results' message
+                if(!hasVisibleFaqs) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer | P&D Industries</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="font-sans antialiased bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/30">
+                        <i data-lucide="hexagon" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">P&D Industries</span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Home</a>
+                    <a href="product-catalog.html" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Products</a>
+                    <a href="about.html" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">About</a>
+                    <a href="contact.html" class="text-brand-600 font-medium transition-colors">Contact</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-lg text-white bg-brand-600 hover:bg-brand-700 shadow-md shadow-brand-500/20 transition-all">
+                        Get a Quote
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow pt-20">
+        
+        <!-- Hero Section -->
+        <section class="bg-slate-900 relative overflow-hidden">
+            <!-- Decorative background elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+                <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            </div>
+            
+            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-brand-100 text-sm font-medium mb-6 backdrop-blur-sm">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    Last updated: March 3, 2026
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Disclaimer</h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    Important information about product details, pricing, and usage. Please read carefully before making a purchase or using our services.
+                </p>
+            </div>
+        </section>
+
+        <!-- Disclaimer Content Sections -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- 1. General Disclaimer -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-gray-50 text-gray-700 rounded-xl flex items-center justify-center mb-6 border border-gray-100">
+                        <i data-lucide="info" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">1. General Disclaimer</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        The information provided by P&D Industries on our website and communications is for general informational purposes only. All information is provided in good faith, however, we make no representation or warranty of any kind regarding accuracy, adequacy, or completeness.
+                    </p>
+                </div>
+
+                <!-- 2. Product Images Disclaimer -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 border border-blue-100">
+                        <i data-lucide="image" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">2. Product Images</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Images shown are for reference and illustration purposes only. The actual product may vary by model, version, manufacturing batch, or regional differences. Color representations may also differ based on your display settings.
+                    </p>
+                </div>
+
+                <!-- 3. Specs & Information Disclaimer -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center mb-6 border border-brand-100">
+                        <i data-lucide="file-text" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">3. Specs & Information</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Product specifications, dimensions, and features are subject to change without prior notice due to continuous improvements. Final confirmation of specifications must be made via the official invoice or latest official catalog.
+                    </p>
+                </div>
+
+                <!-- 4. Pricing Disclaimer -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6 border border-green-100">
+                        <i data-lucide="circle-dollar-sign" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">4. Pricing</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        We operate primarily on an inquiry-based pricing structure. Prices listed (if any) are indicative. Official quotes are provided exclusively via WhatsApp or Phone Call and are subject to strictly defined validity periods.
+                    </p>
+                </div>
+
+                <!-- 5. Availability Disclaimer -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-6 border border-orange-100">
+                        <i data-lucide="package-search" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">5. Availability</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Product listings on our website do not guarantee immediate stock availability. All orders and stock levels are subject to final confirmation by our sales team at the time of order processing.
+                    </p>
+                </div>
+
+                <!-- 6. Usage & Safety Disclaimer -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-6 border border-red-100">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">6. Usage & Safety</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        The user assumes all responsibility for operating equipment. Users must strictly follow all provided manuals and safety guidelines. Professional installation is highly recommended where applicable to prevent injury or warranty voidance.
+                    </p>
+                </div>
+
+                <!-- 7. External Links / WhatsApp -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow lg:col-span-1 md:col-span-2">
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 border border-purple-100">
+                        <i data-lucide="external-link" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">7. External Links</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Our website and communications may contain links to external websites or utilize third-party platforms (such as WhatsApp for communications). We do not control these platforms, and they are governed by their own respective privacy policies and terms of service.
+                    </p>
+                </div>
+
+                <!-- 8. Contact Section (Card format) -->
+                <div id="contact" class="bg-slate-900 rounded-2xl p-8 shadow-lg border border-slate-800 lg:col-span-2 md:col-span-2 flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute right-0 top-0 w-64 h-64 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-x-1/2 -translate-y-1/2"></div>
+                    
+                    <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Need Clarification?</h3>
+                    <p class="text-slate-300 mb-6 relative z-10">Our support team is available to answer any questions regarding our policies, products, or pricing.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10">
+                        <a href="https://wa.me/918724828479" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-white/10 hover:bg-white/20 transition-colors p-3 rounded-xl border border-white/10 text-white">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-brand-400"></i>
+                            <span class="text-sm font-medium">WhatsApp Us</span>
+                        </a>
+                        <a href="mailto:mainadigitalstore@gmail.com" class="flex items-center gap-3 bg-white/10 hover:bg-white/20 transition-colors p-3 rounded-xl border border-white/10 text-white">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-400"></i>
+                            <span class="text-sm font-medium">Email Support</span>
+                        </a>
+                        <a href="tel:+918724828479" class="flex items-center gap-3 bg-white/10 hover:bg-white/20 transition-colors p-3 rounded-xl border border-white/10 text-white">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-400"></i>
+                            <span class="text-sm font-medium">Call Us</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-white border-t border-gray-100 py-20">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                    <p class="text-gray-600">Quick answers related to our terms and disclaimers.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                        <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                            <span class="font-semibold text-gray-900">Do prices include shipping?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                            No, our standard quotes do not include shipping unless explicitly stated. Shipping, logistics, and handling fees are calculated separately based on your delivery location and the size of your order.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                        <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                            <span class="font-semibold text-gray-900">Can specs change after ordering?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                            Once an order is officially invoiced and paid, the specifications are locked for that specific delivery. However, pre-order inquiries or preliminary quotes are based on current data, which may change prior to final invoice generation.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                        <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                            <span class="font-semibold text-gray-900">Do you guarantee exact product color/design as photo?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                            We cannot guarantee an exact match. Due to variations in digital display calibration, lighting conditions during photography, and minor design updates in manufacturing batches, the physical product may slightly differ from the digital reference image.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                        <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors">
+                            <span class="font-semibold text-gray-900">Where can I confirm warranty terms?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300 transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                            Specific warranty terms, durations, and conditions vary by product category. These details will be clearly outlined in your official quotation document and the final purchase invoice provided by our sales team.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg">
+                            <i data-lucide="hexagon" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-bold text-xl text-white">P&D Industries</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Empowering businesses with premium technology solutions and reliable hardware infrastructure globally.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-brand-400 transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-brand-400 transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-brand-400 transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">Home</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">Products Catalog</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-brand-400 text-sm transition-colors">Disclaimer</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">Return Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-slate-400 text-sm">
+                            <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-brand-500 shrink-0"></i>
+                            <span>B.G Road, Biswanath Town,<br>Assam 784177</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            <span>+91 87248 28479</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-500 shrink-0"></i>
+                            <span>mainadigitalstore@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">
+                    &copy; 2026 P&D Industries. All rights reserved.
+                </p>
+                <div class="flex items-center gap-2 text-slate-500 text-sm">
+                    <span>Designed with</span>
+                    <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
+                    <span>for our customers.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons and FAQ Script -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // FAQ Accordion Logic
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.lucide-chevron-down');
+            const allContents = document.querySelectorAll('.faq-content');
+            
+            // Optional: Close other open FAQs
+            allContents.forEach(el => {
+                if (el !== content && !el.classList.contains('hidden')) {
+                    el.classList.add('hidden');
+                    el.previousElementSibling.querySelector('.lucide-chevron-down').classList.remove('rotate-180');
+                }
+            });
+
+            // Toggle current FAQ
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    </script>
+</body>
+</html>

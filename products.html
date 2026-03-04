@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | P&D Industries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Assuming products-data.js exists in the same folder -->
+    <script src="products-data.js"></script>
+    <script src="catalog-data-hook.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb', // Blue 600
+                        secondary: '#475569', // Slate 600
+                        whatsapp: '#25D366'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Modern 2026 UI Polish */
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .smooth-scroll { scroll-behavior: smooth; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .hover-scale { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-scale:hover { transform: translateY(-2px); }
+        .thumbnail-active { border: 2px solid #2563eb; opacity: 1; }
+        .thumbnail-inactive { border: 2px solid transparent; opacity: 0.6; }
+        .thumbnail-inactive:hover { opacity: 1; }
+        
+        /* Custom Scrollbar for a premium feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 smooth-scroll flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/30">P&D</div>
+                    <span class="font-bold text-xl tracking-tight text-gray-900 hidden sm:block">Industries</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-medium transition-colors">Home</a>
+                    <a href="products.html" class="text-primary font-medium transition-colors">Products</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary font-medium transition-colors">About</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary font-medium transition-colors">Contact</a>
+                    <a href="faq.html" class="text-gray-600 hover:text-primary font-medium transition-colors">FAQ</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="https://wa.me/918724828479" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 bg-whatsapp hover:bg-green-600 text-white px-5 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>Order on WhatsApp</span>
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        
+        <!-- ERROR STATE (Hidden by default) -->
+        <div id="error-state" class="hidden flex flex-col items-center justify-center py-20 text-center">
+            <div class="w-24 h-24 bg-red-100 text-red-500 rounded-full flex items-center justify-center mb-6">
+                <i data-lucide="package-x" class="w-12 h-12"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Product Not Found</h1>
+            <p class="text-gray-500 max-w-md mb-8">The product you are looking for does not exist, has been removed, or the link is invalid.</p>
+            <a href="products.html" class="inline-flex items-center gap-2 bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                Browse All Products
+            </a>
+        </div>
+
+        <!-- PRODUCT STATE (Hidden by default) -->
+        <div id="product-state" class="hidden">
+            <!-- Breadcrumbs -->
+            <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 mx-1"></i>
+                            <a href="products.html" class="hover:text-primary transition-colors">Products</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <i data-lucide="chevron-right" class="w-4 h-4 mx-1"></i>
+                            <span class="text-gray-900 font-medium truncate max-w-[200px]" id="breadcrumb-name">Loading...</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Product Overview Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- Left: Image Gallery -->
+                <div class="flex flex-col gap-4">
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm relative group">
+                        <img id="main-image" src="" alt="Product Image" class="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105" onerror="handleImageError(this)">
+                        <div id="image-badge" class="absolute top-4 left-4 hidden bg-primary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide"></div>
+                    </div>
+                    <!-- Thumbnails -->
+                    <div id="thumbnails-container" class="grid grid-cols-5 gap-3">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Right: Product Details -->
+                <div class="flex flex-col">
+                    <div class="mb-6 border-b border-gray-100 pb-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span id="status-pill" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                In Stock
+                            </span>
+                            <span id="category-pill" class="text-sm text-gray-500 font-medium">Category</span>
+                        </div>
+                        <h1 id="product-name" class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">Product Name</h1>
+                        <div class="flex items-baseline gap-4">
+                            <span id="product-price" class="text-3xl font-bold text-primary">$0.00</span>
+                            <span id="product-original-price" class="text-lg text-gray-400 line-through hidden">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p id="product-short-desc" class="text-gray-600 text-lg leading-relaxed mb-6">
+                            Short description goes here.
+                        </p>
+                        
+                        <div class="bg-blue-50/50 rounded-xl p-6 border border-blue-100 mb-6">
+                            <h3 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                <i data-lucide="star" class="w-5 h-5 text-yellow-500 fill-current"></i> Key Highlights
+                            </h3>
+                            <ul id="product-highlights" class="space-y-2">
+                                <!-- Populated by JS -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- V1 Note -->
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 flex gap-3 text-amber-800 text-sm">
+                        <i data-lucide="info" class="w-5 h-5 flex-shrink-0 text-amber-600"></i>
+                        <p><strong>Note:</strong> Version 1 orders are processed manually via WhatsApp or Email. Online automated checkout will be available in Version 2.</p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button id="btn-whatsapp" class="flex-1 bg-whatsapp hover:bg-green-600 text-white px-6 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            Order on WhatsApp
+                        </button>
+                        <button id="btn-email" class="flex-1 bg-white border-2 border-gray-200 hover:border-primary hover:text-primary text-gray-700 px-6 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            Email Inquiry
+                        </button>
+                    </div>
+                    
+                    <button onclick="document.getElementById('inquiry-section').scrollIntoView({behavior: 'smooth'})" class="text-gray-500 hover:text-primary font-medium text-sm flex items-center justify-center gap-1 transition-colors">
+                        <i data-lucide="arrow-down" class="w-4 h-4"></i> Need bulk pricing? Fill out the inquiry form below.
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detailed Information Sections -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+                
+                <!-- Left Column: Specs, Desc, FAQ (Takes up 2 cols) -->
+                <div class="lg:col-span-2 space-y-12">
+                    
+                    <!-- Description -->
+                    <section id="desc-section" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="file-text" class="w-6 h-6 text-primary"></i> Description
+                        </h2>
+                        <div id="product-long-desc" class="prose max-w-none text-gray-600 leading-relaxed space-y-4">
+                            <!-- Populated by JS -->
+                        </div>
+                    </section>
+
+                    <!-- Specifications Table -->
+                    <section id="specs-section" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 hidden">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="settings" class="w-6 h-6 text-primary"></i> Specifications
+                        </h2>
+                        <div class="overflow-x-auto rounded-xl border border-gray-200">
+                            <table class="w-full text-left text-sm text-gray-600">
+                                <tbody id="specs-table-body" class="divide-y divide-gray-200">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- FAQ Accordion -->
+                    <section id="faq-section" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 hidden">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="help-circle" class="w-6 h-6 text-primary"></i> Frequently Asked Questions
+                        </h2>
+                        <div id="faq-container" class="space-y-4">
+                            <!-- Populated by JS -->
+                        </div>
+                    </section>
+
+                    <!-- Reviews Placeholder -->
+                    <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="message-square" class="w-6 h-6 text-primary"></i> Reviews
+                        </h2>
+                        <div class="text-center py-8 bg-gray-50 rounded-xl border border-dashed border-gray-200">
+                            <div class="flex justify-center gap-1 mb-3 text-gray-300">
+                                <i data-lucide="star" class="w-8 h-8"></i>
+                                <i data-lucide="star" class="w-8 h-8"></i>
+                                <i data-lucide="star" class="w-8 h-8"></i>
+                                <i data-lucide="star" class="w-8 h-8"></i>
+                                <i data-lucide="star" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">No reviews yet</h3>
+                            <p class="text-gray-500 mb-4 max-w-sm mx-auto">Be the first to review this product! Share your experience with us on WhatsApp.</p>
+                            <button id="btn-review-wa" class="text-primary font-medium hover:text-blue-700 transition-colors">
+                                Send us a message &rarr;
+                            </button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column: Sticky Inquiry Form -->
+                <div class="lg:col-span-1">
+                    <div id="inquiry-section" class="sticky top-28 bg-white rounded-2xl p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
+                        <h2 class="text-xl font-bold text-gray-900 mb-2">Send an Inquiry</h2>
+                        <p class="text-gray-500 text-sm mb-6">Fill out this form to generate a structured WhatsApp message for faster processing.</p>
+                        
+                        <form id="inquiry-form" class="space-y-4">
+                            <div>
+                                <label for="inq-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="inq-name" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="inq-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                    <input type="tel" id="inq-phone" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                                </div>
+                                <div>
+                                    <label for="inq-city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                    <input type="text" id="inq-city" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="inq-qty" class="block text-sm font-medium text-gray-700 mb-1">Quantity Required</label>
+                                <input type="number" id="inq-qty" min="1" value="1" required class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="inq-msg" class="block text-sm font-medium text-gray-700 mb-1">Additional Message (Optional)</label>
+                                <textarea id="inq-msg" rows="3" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gray-900 hover:bg-black text-white px-6 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-md hover:-translate-y-0.5 mt-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                Open WhatsApp with Inquiry
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <section id="related-section" class="hidden mb-16 pt-8 border-t border-gray-200">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">Related Products</h2>
+                    <a href="products.html" class="text-primary hover:text-blue-700 font-medium text-sm flex items-center gap-1">
+                        View All <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div id="related-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-auto pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold shadow-md">P&D</div>
+                        <span class="font-bold text-xl tracking-tight text-gray-900">P&D Industries</span>
+                    </div>
+                    <p class="text-gray-500 mb-6 max-w-sm">Premium industrial supplies and digital solutions tailored for modern businesses. Quality you can trust.</p>
+                    <div class="flex space-x-4 text-gray-400">
+                        <a href="#" class="hover:text-primary transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="products.html" class="hover:text-primary transition-colors">Products</a></li>
+                        <li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="faq.html" class="hover:text-primary transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm text-gray-500">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+                            <span>123 Industrial Hub, Tech City, 10001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 flex-shrink-0"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 flex-shrink-0"></i>
+                            <a href="mailto:mainadigitalstore@gmail.com" class="hover:text-primary transition-colors">mainadigitalstore@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
+                <p>&copy; 2026 P&D Industries. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-gray-600 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-600 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Action Button (WhatsApp) -->
+    <a href="https://wa.me/918724828479" target="_blank" rel="noopener noreferrer" class="sm:hidden fixed bottom-6 right-6 bg-whatsapp text-white p-4 rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:scale-110 transition-transform z-50 flex items-center justify-center">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <!-- Logic Script -->
+    <script>
+        // Constants
+        const WHATSAPP_NUMBER = "918724828479"; 
+        const EMAIL_ADDRESS = "mainadigitalstore@gmail.com";
+        const FALLBACK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="%23f3f4f6"><rect width="400" height="400" /><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="%239ca3af">No Image</text></svg>`;
+
+        // Inline Image Fallback Handler
+        function handleImageError(img) {
+            if (img.src !== FALLBACK_SVG) {
+                img.onerror = null; // Prevent infinite loop
+                img.src = FALLBACK_SVG;
+            }
+        }
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Setup Data & URL parsing
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const errorState = document.getElementById('error-state');
+            const productState = document.getElementById('product-state');
+
+            // Defensive extraction from external products-data.js
+            const productList =
+            (typeof PRODUCTS !== "undefined" && Array.isArray(PRODUCTS)) ? PRODUCTS :
+            (typeof products !== "undefined" && Array.isArray(products)) ? products :
+            [];
+
+            // 2. Validate Product
+            const product = productList.find(p => String(p.id) === String(productId));
+
+            if (!productId || !product) {
+            errorState.classList.remove('hidden');
+            return;
+            }
+
+            productState.classList.remove('hidden');
+
+            // 3. Populate Basic Details
+            document.title = `${product.name} | P&D Industries`;
+            document.getElementById('breadcrumb-name').textContent = product.name;
+            document.getElementById('product-name').textContent = product.name;
+            
+            // Format Price safely
+            ;
+            document.getElementById('product-price').textContent =
+            product.priceLabel || "Contact for Price";
+            // Category & Status
+            document.getElementById('category-pill').textContent = product.category || 'General';
+            const statusPill = document.getElementById('status-pill');
+            statusPill.textContent = product.status || 'In Stock';
+            if ((product.status || '').toLowerCase() === 'out of stock') {
+                statusPill.className = "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800";
+            }
+
+            // Badges
+            const badgeEl = document.getElementById('image-badge');
+            if (product.badges && product.badges.length > 0) {
+                badgeEl.textContent = product.badges[0];
+                badgeEl.classList.remove('hidden');
+            }
+
+            // Text descriptions
+            document.getElementById('product-short-desc').textContent = product.shortDesc || 'No description available.';
+            document.getElementById('product-long-desc').innerHTML = product.longDesc || `<p>${product.shortDesc || 'No description available.'}</p>`;
+
+            // 4. Handle Images (Main + Thumbnails)
+            const images = (product.images && product.images.length > 0) ? product.images : [FALLBACK_SVG];
+            const mainImgEl = document.getElementById('main-image');
+            const thumbsContainer = document.getElementById('thumbnails-container');
+            
+            mainImgEl.src = images[0];
+
+            if (images.length > 1) {
+                images.forEach((imgUrl, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = `aspect-square rounded-lg overflow-hidden bg-white cursor-pointer transition-all ${index === 0 ? 'thumbnail-active' : 'thumbnail-inactive'}`;
+                    
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.alt = `Thumbnail ${index + 1}`;
+                    img.className = "w-full h-full object-cover";
+                    img.onerror = function() { handleImageError(this); };
+                    
+                    btn.appendChild(img);
+                    
+                    btn.onclick = () => {
+                        mainImgEl.src = imgUrl;
+                        // Update active state
+                        Array.from(thumbsContainer.children).forEach(c => {
+                            c.classList.remove('thumbnail-active');
+                            c.classList.add('thumbnail-inactive');
+                        });
+                        btn.classList.add('thumbnail-active');
+                        btn.classList.remove('thumbnail-inactive');
+                    };
+                    
+                    thumbsContainer.appendChild(btn);
+                });
+            } else {
+                thumbsContainer.classList.add('hidden'); // Hide if only 1 or 0 images
+            }
+
+            // 5. Populate Highlights
+            const highlightsContainer = document.getElementById('product-highlights');
+            if (product.highlights && product.highlights.length > 0) {
+                product.highlights.forEach(highlight => {
+                    const li = document.createElement('li');
+                    li.className = "flex items-start gap-2 text-gray-700 text-sm";
+                    li.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"></i> <span>${highlight}</span>`;
+                    highlightsContainer.appendChild(li);
+                });
+            } else {
+                highlightsContainer.parentElement.classList.add('hidden');
+            }
+
+            // 6. Populate Specifications Table
+            const specsSection = document.getElementById('specs-section');
+            const specsBody = document.getElementById('specs-table-body');
+            if (product.specs && Object.keys(product.specs).length > 0) {
+                specsSection.classList.remove('hidden');
+                Object.entries(product.specs).forEach(([key, value], index) => {
+                    const tr = document.createElement('tr');
+                    tr.className = index % 2 === 0 ? "bg-white" : "bg-gray-50";
+                    tr.innerHTML = `
+                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap w-1/3 border-r border-gray-100">${key}</th>
+                        <td class="px-4 py-3">${value}</td>
+                    `;
+                    specsBody.appendChild(tr);
+                });
+            }
+
+            // 7. Populate FAQ Accordion
+            const faqSection = document.getElementById('faq-section');
+            const faqContainer = document.getElementById('faq-container');
+            if (product.faq && Array.isArray(product.faq) && product.faq.length > 0) {
+                faqSection.classList.remove('hidden');
+                product.faq.forEach((item, index) => {
+                    const details = document.createElement('details');
+                    details.className = "group border border-gray-200 rounded-xl bg-white [&_summary::-webkit-details-marker]:hidden";
+                    details.innerHTML = `
+                        <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-4 text-gray-900 font-medium">
+                            ${item.question}
+                            <span class="relative h-5 w-5 shrink-0">
+                                <i data-lucide="plus" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0 transition-opacity"></i>
+                                <i data-lucide="minus" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100 transition-opacity"></i>
+                            </span>
+                        </summary>
+                        <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed border-t border-gray-100 mt-2 pt-4">
+                            ${item.answer}
+                        </div>
+                    `;
+                    faqContainer.appendChild(details);
+                });
+            }
+
+            // 8. Related Products
+            const relatedSection = document.getElementById('related-section');
+            const relatedContainer = document.getElementById('related-container');
+            const otherProducts = productList.filter(p => String(p.id) !== String(productId));
+            
+            if (otherProducts.length > 0) {
+                relatedSection.classList.remove('hidden');
+                // Take up to 4 related products
+                otherProducts.slice(0, 4).forEach(rp => {
+                    const imgUrl = (rp.images && rp.images.length > 0) ? rp.images[0] : FALLBACK_SVG;
+                    const priceFmt = rp.priceLabel || "Contact for Price";
+                    const card = document.createElement('a');
+                    card.href = `products.html?id=${rp.id}`;
+                    card.className = "group block bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-all hover-scale";
+                    card.innerHTML = `
+                        <div class="aspect-[4/3] bg-gray-50 p-4 flex items-center justify-center relative border-b border-gray-100">
+                            <img src="${imgUrl}" alt="${rp.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform" onerror="handleImageError(this)">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-gray-900 truncate mb-1">${rp.name}</h3>
+                            <p class="text-sm text-gray-500 truncate mb-2">${rp.category || 'General'}</p>
+                            <p class="font-bold text-primary">${priceFmt}</p>
+                        </div>
+                    `;
+                    relatedContainer.appendChild(card);
+                });
+            }
+
+            // 9. Re-initialize icons for newly injected DOM elements
+            lucide.createIcons();
+
+            // 10. Button Actions Setup
+            
+            // Simple WhatsApp direct button
+            const waText = encodeURIComponent(`Hello, I am interested in ${product.name}. Please share price and details.`);
+            const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+            
+            document.getElementById('btn-whatsapp').onclick = () => window.open(waLink, '_blank');
+            document.getElementById('btn-review-wa').onclick = () => window.open(waLink, '_blank');
+
+            // Email direct button
+            const emailSubject = encodeURIComponent(`Inquiry regarding product: ${product.name}`);
+            const emailBody = encodeURIComponent(`Hello P&D Industries team,\n\nI am interested in purchasing "${product.name}".\n\nPlease share more details regarding pricing, availability, and delivery.\n\nThank you.`);
+            const mailtoLink = `mailto:${EMAIL_ADDRESS}?subject=${emailSubject}&body=${emailBody}`;
+            
+            document.getElementById('btn-email').onclick = () => window.location.href = mailtoLink;
+
+            // Inquiry Form Submission (Generates structured WA message)
+            const form = document.getElementById('inquiry-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('inq-name').value.trim();
+                const phone = document.getElementById('inq-phone').value.trim();
+                const city = document.getElementById('inq-city').value.trim();
+                const qty = document.getElementById('inq-qty').value;
+                const msg = document.getElementById('inq-msg').value.trim();
+
+                let structuredMsg = `*New Inquiry via Website*%0A%0A`;
+                structuredMsg += `*Product:* ${product.name}%0A`;
+                structuredMsg += `*Quantity:* ${qty}%0A`;
+                structuredMsg += `------------------------%0A`;
+                structuredMsg += `*Name:* ${name}%0A`;
+                structuredMsg += `*Phone:* ${phone}%0A`;
+                structuredMsg += `*City:* ${city}%0A`;
+                
+                if (msg) {
+                    structuredMsg += `------------------------%0A*Additional Message:*%0A${msg}`;
+                }
+
+                window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${structuredMsg}`, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

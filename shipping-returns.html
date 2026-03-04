@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping, Returns & Refunds | P&D Industries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f6f6f6',
+                            100: '#e7e7e7',
+                            900: '#111111',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.active {
+            max-height: 500px; /* Arbitrary large height */
+            opacity: 1;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-btn.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-brand-50 antialiased selection:bg-gray-900 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="text-2xl font-bold tracking-tighter text-brand-900">P&D <span class="text-gray-400">Industries</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-brand-900 transition-colors">Shop</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-brand-900 transition-colors">About</a>
+                    <a href="#" class="text-sm font-medium text-gray-500 hover:text-brand-900 transition-colors">Support</a>
+                    <a href="#" class="px-5 py-2.5 text-sm font-medium text-white bg-brand-900 hover:bg-gray-800 rounded-full transition-colors shadow-sm">Contact Us</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-500 hover:text-brand-900 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-brand-900 tracking-tight mb-4">Shipping, Returns & Refunds</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg">Everything you need to know about how we deliver your orders and our policies for returns and refunds.</p>
+            <div class="mt-8 inline-flex items-center space-x-2 text-sm text-gray-400 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+                <span>Last updated: March 3, 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <!-- Sidebar Navigation (Desktop) -->
+            <aside class="hidden lg:block w-64 flex-shrink-0">
+                <div class="sticky top-32">
+                    <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Contents</h3>
+                    <nav class="space-y-1 border-l border-gray-200">
+                        <a href="#shipping-coverage" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Shipping Coverage</a>
+                        <a href="#delivery-timelines" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Delivery Timelines</a>
+                        <a href="#shipping-charges" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Shipping Charges</a>
+                        <a href="#order-tracking" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Order Tracking</a>
+                        <a href="#return-eligibility" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Return Eligibility</a>
+                        <a href="#non-returnable" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Non-Returnable Items</a>
+                        <a href="#damaged-transit" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Damaged in Transit</a>
+                        <a href="#refund-process" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Refund Process</a>
+                        <a href="#warranty-clarification" class="block px-4 py-2 text-sm text-gray-600 hover:text-brand-900 hover:border-brand-900 border-l-2 border-transparent transition-colors">Warranty vs. Return</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Policy Content -->
+            <main class="flex-1 max-w-3xl prose prose-gray prose-headings:text-brand-900 prose-a:text-blue-600 hover:prose-a:text-blue-500">
+                
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 space-y-12">
+                    
+                    <!-- Section 1 -->
+                    <section id="shipping-coverage" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="globe" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Shipping Coverage</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">We proudly offer India-wide shipping. Whether you are located in a major metropolitan city or a remote tier-3 town, we partner with reliable logistics providers to ensure your order reaches you safely. Specific serviceability for extremely remote PIN codes will be confirmed during the inquiry or checkout process.</p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section id="delivery-timelines" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="clock" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Delivery Timelines</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">Delivery schedules vary based on the nature of the product and your location:</p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-4">
+                            <li><strong class="text-gray-900">Standard Items:</strong> Dispatched within 24-48 hours. Delivered in 3-7 business days.</li>
+                            <li><strong class="text-gray-900">Custom/Made-to-Order Items:</strong> Production takes 1-3 weeks depending on complexity, followed by standard shipping times.</li>
+                            <li><strong class="text-gray-900">Remote Locations:</strong> May require an additional 3-5 business days for final delivery.</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section id="shipping-charges" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="credit-card" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Shipping Charges</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">Shipping costs are calculated based on the volumetric weight of your order and the destination PIN code. Exact shipping charges will be transparently quoted to you during your initial inquiry or at the checkout stage before any payment is processed. We occasionally run free-shipping promotions, which will be applied automatically if your order qualifies.</p>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section id="order-tracking" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Order Tracking</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">We believe in keeping you updated every step of the way. Once your order is dispatched, you will receive real-time tracking updates directly via WhatsApp and Email. You will be provided with a tracking link and the courier partner's details to monitor your shipment's journey.</p>
+                    </section>
+
+                    <hr class="border-gray-100">
+
+                    <!-- Section 5 -->
+                    <section id="return-eligibility" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="rotate-ccw" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Return Eligibility</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">We maintain a flexible and customer-friendly return policy. To be eligible for a return:</p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-4">
+                            <li>The return request must be raised within <strong class="text-gray-900">7 days</strong> of delivery.</li>
+                            <li>The item must be <strong class="text-gray-900">unused</strong> and in the same condition that you received it.</li>
+                            <li>It must be in the <strong class="text-gray-900">original packaging</strong> with all tags, manuals, and accessories intact.</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section id="non-returnable" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="ban" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Non-Returnable Items</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">Certain items cannot be returned due to hygiene, customization, or clearance reasons. These include:</p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2 mt-4">
+                            <li>Custom-made or personalized orders.</li>
+                            <li>Items marked as "Final Sale" or "Clearance".</li>
+                            <li>Gift cards and downloadable software products.</li>
+                            <li>Items that show obvious signs of use, wear, or damage caused post-delivery.</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section id="damaged-transit" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-red-50 text-red-600 rounded-lg"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Damaged in Transit</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">If your order arrives damaged, please do not accept the package if the outer box is severely compromised. If you discover damage after opening:</p>
+                        <div class="bg-gray-50 p-4 rounded-lg mt-4 border border-gray-100 text-sm">
+                            <p class="font-medium text-gray-900 mb-2">Required Action:</p>
+                            <ol class="list-decimal pl-5 text-gray-600 space-y-1">
+                                <li>Take clear photos of the damaged item AND the packaging.</li>
+                                <li>Provide an unboxing video if possible (highly recommended).</li>
+                                <li>Contact our support team within <strong>24 hours</strong> of delivery.</li>
+                            </ol>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mt-4">We will arrange an expedited replacement or full refund upon verification of the damage.</p>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section id="refund-process" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="receipt" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Refund Process & Timeline</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">Once your returned item is received and inspected at our facility (usually within 48 hours of receipt), we will notify you of the approval or rejection of your refund.</p>
+                        <p class="text-gray-600 leading-relaxed mt-2">If approved, the refund will be processed to your original method of payment. Please allow <strong>5-7 business days</strong> for the funds to reflect in your account, depending on your bank or credit card issuer.</p>
+                    </section>
+
+                    <!-- Section 9 -->
+                    <section id="warranty-clarification" class="scroll-mt-32">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="p-2 bg-gray-50 rounded-lg text-gray-600"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                            <h2 class="text-2xl font-semibold m-0">Warranty vs. Return</h2>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">It's important to distinguish between returns and warranty claims:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                                <h4 class="font-semibold text-gray-900 mb-1">Returns</h4>
+                                <p class="text-sm text-gray-600">Applicable for brand-new, unused items you no longer want. Must be initiated within 7 days.</p>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                                <h4 class="font-semibold text-gray-900 mb-1">Warranty</h4>
+                                <p class="text-sm text-gray-600">Applicable for items that develop a manufacturing defect over time. Covers repair or replacement depending on the product's specific warranty period.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact -->
+                    <section id="contact" class="scroll-mt-32 bg-brand-900 text-white p-8 rounded-xl mt-8">
+                        <h2 class="text-2xl font-semibold mb-2 text-white">Need further assistance?</h2>
+                        <p class="text-gray-300 mb-6">Our dedicated support team is here to help you with tracking, returns, and refunds.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="mailto:mainadigitalstore@gmail.com" class="flex items-center justify-center space-x-2 bg-white text-brand-900 px-5 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                <span>Email Support</span>
+                            </a>
+                            <a href="https://wa.me/918724828479" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-2 bg-transparent border border-gray-600 text-white px-5 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                <span>WhatsApp Us</span>
+                            </a>
+                        </div>
+                    </section>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 border-t border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-brand-900">Frequently Asked Questions</h2>
+                <p class="text-gray-500 mt-2">Quick answers to common shipping and return inquiries.</p>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                <!-- FAQ 1 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                    <button class="accordion-btn w-full flex justify-between items-center p-5 text-left focus:outline-none">
+                        <span class="font-medium text-gray-900">Can I change my shipping address after placing an order?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content px-5 text-gray-600 text-sm">
+                        <div class="pb-5">Yes, but only if the order has not yet been dispatched from our warehouse. Please contact our support team immediately via WhatsApp to request an address modification.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                    <button class="accordion-btn w-full flex justify-between items-center p-5 text-left focus:outline-none">
+                        <span class="font-medium text-gray-900">Do you ship internationally?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content px-5 text-gray-600 text-sm">
+                        <div class="pb-5">Currently, our standard checkout process only supports India-wide shipping. However, we do accept international orders upon special request. Please email us with your requirements for a custom shipping quote.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                    <button class="accordion-btn w-full flex justify-between items-center p-5 text-left focus:outline-none">
+                        <span class="font-medium text-gray-900">Who pays for the return shipping?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content px-5 text-gray-600 text-sm">
+                        <div class="pb-5">If the return is due to a change of mind, the customer is responsible for bearing the return shipping costs. If the item arrived damaged or defective, we will arrange a free reverse pickup or reimburse your shipping costs.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                    <button class="accordion-btn w-full flex justify-between items-center p-5 text-left focus:outline-none">
+                        <span class="font-medium text-gray-900">How do I track my order on WhatsApp?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content px-5 text-gray-600 text-sm">
+                        <div class="pb-5">Ensure you provide a valid WhatsApp number during checkout. Once dispatched, our automated system will send milestone updates (Dispatched, Out for Delivery, Delivered) directly to your chat.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                    <button class="accordion-btn w-full flex justify-between items-center p-5 text-left focus:outline-none">
+                        <span class="font-medium text-gray-900">What should I do if my refund is delayed?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content px-5 text-gray-600 text-sm">
+                        <div class="pb-5">If you haven't received a refund within the standard 5-7 business days after approval, first check your bank account again. Then, contact your credit card company or bank, as processing times vary. If you've done this and still have not received your refund, contact us.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-gray-50/50">
+                    <button class="accordion-btn w-full flex justify-between items-center p-5 text-left focus:outline-none">
+                        <span class="font-medium text-gray-900">Can I exchange a product instead of getting a refund?</span>
+                        <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400"></i>
+                    </button>
+                    <div class="accordion-content px-5 text-gray-600 text-sm">
+                        <div class="pb-5">Yes, exchanges are permitted for items of the same value, subject to inventory availability. Please mention that you prefer an exchange when submitting your return request to our support team.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold tracking-tighter text-brand-900">P&D <span class="text-gray-400">Industries</span></span>
+                    <p class="text-sm text-gray-500 mt-1">Premium products, delivered with care.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-sm text-gray-500 hover:text-brand-900">Privacy Policy</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-brand-900">Terms of Service</a>
+                    <a href="#" class="text-sm text-brand-900 font-medium">Shipping & Returns</a>
+                </div>
+            </div>
+            <div class="mt-8 text-center md:text-left text-xs text-gray-400">
+                &copy; 2026 P&D Industries. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+
+        // FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordions = document.querySelectorAll('.accordion-btn');
+
+            accordions.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const isActive = button.classList.contains('active');
+
+                    // Close all other accordions
+                    accordions.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.nextElementSibling.classList.remove('active');
+                    });
+
+                    // Toggle current accordion
+                    if (!isActive) {
+                        button.classList.add('active');
+                        content.classList.add('active');
+                    }
+                });
+            });
+            
+            // Highlight active sidebar link on scroll
+            const sections = document.querySelectorAll('main section');
+            const navLinks = document.querySelectorAll('aside nav a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-brand-900', 'border-brand-900');
+                    if (link.getAttribute('href').includes(current) && current !== '') {
+                        link.classList.add('text-brand-900', 'border-brand-900');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
